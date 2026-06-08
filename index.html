@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Todos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Project Todos</h1>
+    <button id="add-project-btn">+ New Project</button>
+  </header>
+
+  <main id="projects-container">
+    <p class="loading">Loading projects…</p>
+  </main>
+
+  <!-- Add Project Modal -->
+  <dialog id="project-modal">
+    <form id="project-form">
+      <h2>New Project</h2>
+      <label>Name <input type="text" name="name" required></label>
+      <label>Description <input type="text" name="description"></label>
+      <div class="modal-actions">
+        <button type="button" id="cancel-project">Cancel</button>
+        <button type="submit">Add Project</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Add Task Modal -->
+  <dialog id="task-modal">
+    <form id="task-form">
+      <h2>New Task</h2>
+      <input type="hidden" name="projectId">
+      <label>Title <input type="text" name="title" required></label>
+      <label>Notes <input type="text" name="notes"></label>
+      <label>Priority
+        <select name="priority">
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+      </label>
+      <div class="modal-actions">
+        <button type="button" id="cancel-task">Cancel</button>
+        <button type="submit">Add Task</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- JSON Export Panel -->
+  <details id="json-panel">
+    <summary>View / Export JSON</summary>
+    <p class="json-hint">Copy this into <code>data/projects.json</code> to save changes made in the UI.</p>
+    <textarea id="json-output" readonly rows="20" spellcheck="false"></textarea>
+    <button id="copy-json-btn">Copy JSON</button>
+  </details>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
